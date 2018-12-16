@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.0.final using JasperReports Library version 6.5.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="GraficaAbiertosCerrados" pageWidth="760" pageHeight="780" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="760" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Error" uuid="e266afdc-affb-49da-b4a6-15f5f311320d">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<queryString>
+		<![CDATA[SELECT gerencia, sum(total_abiertos) as total_abiertos, sum(total_cerrados) as total_cerrados FROM tickets_abiertos_cerrados GROUP BY 1 limit 5]]>
+	</queryString>
+	<field name="total_abiertos" class="java.lang.Integer"/>
+	<field name="total_cerrados" class="java.lang.Integer"/>
+	<field name="gerencia" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band height="280">
+			<barChart>
+				<chart evaluationTime="Report">
+					<reportElement stretchType="ContainerHeight" x="0" y="1" width="760" height="279" uuid="87110b8c-0be8-4680-977a-79d526292709">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Cerrados"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{gerencia}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{total_cerrados}]]></valueExpression>
+						<labelExpression><![CDATA["Cerrados = "+$F{total_cerrados}]]></labelExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Abiertos"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{gerencia}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{total_abiertos}]]></valueExpression>
+						<labelExpression><![CDATA["Abiertos = "+$F{total_abiertos}]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot isShowLabels="true">
+					<plot orientation="Horizontal"/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</summary>
+</jasperReport>
