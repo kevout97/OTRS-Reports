@@ -13,7 +13,7 @@ mes_corte = meses[(datetime.now().month) - 1]
 anio_corte = datetime.now().year
 
 
-tendencia = "positiva" #Corregir estos datos
+tendencia = "positiva"
 
 query = 'SELECT DATE_FORMAT(fecha,"%Y-%m-%d"), SUM(total_semanal) as total_abiertos, SUM(total_pendientes) as total_pendientes FROM solicitudes_pendientes_semanal GROUP BY 1 ORDER BY 1 DESC'
 mycursor = db.executeSelect(query)
