@@ -7,8 +7,7 @@ from email.mime.base import MIMEBase
 from email import encoders
 
 fromaddr = 'Reportes OTRS'
-toaddrs  = ['kev.gomez97@gmail.com']
-#toaddrs = 'berryrreb@gmail.com'
+toaddrs  = ['email@email.com'] #Agregar los destinatarios deseados
 
 msg = MIMEMultipart()
 msg['Subject'] = "Reporte semanal OTRS"
